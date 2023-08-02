@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, ImageBackground, Image } from 'react-native';
 import COLORS from '../constants/colors';
+import Fondo from '../components/Fondo';
 
 const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
   
+    //Validaciones para las credenciales
     const handleLogin = () => {
       if (username.trim() === '' || password.trim() === '') {
         alert('Por favor, completar todos los campos')
@@ -19,54 +21,46 @@ const Login = () => {
     };
   
     return (
-      <View style={styles.background}>
-        <ImageBackground
-          source={require('../assets/fondo.jpg')}
-          style={styles.ImageBackground}
-          imageStyle={{ opacity: 0.1 }}
-        >
-          <Image
+        //El color del fondo se asigna desde la propiedad backgroundColor, a partir del archivo COLORS.js
+        <Fondo backgroundColor={COLORS.lilaShadow}>
+            {/*Logo de CAPNEE*/}
+            <Image
             source={require('../assets/logo.png')}
             style={styles.logo}
-          >
-          </Image>
-          <View style={styles.container}>
-            <Text style={styles.title}>¡Bienvenido!</Text>
-            <TextInput
-              style={styles.input}
-              placeholder="Usuario"
-              onChangeText={(text) => setUsername(text)}
-              value={username}
-            />
-            <TextInput
-              style={styles.input}
-              placeholder="Contraseña"
-              secureTextEntry
-              onChangeText={(text) => setPassword(text)}
-              value={password}
-            />
-            <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
-              <Text style={styles.loginButtonText}>Iniciar Sesión</Text>
-            </TouchableOpacity>
-          </View>
-        </ImageBackground>
-      </View>
+            >
+            </Image>
+
+            {/*Contenedor blanco con los inputs de texto y el botón de login*/}
+            <View style={styles.container}>
+                <Text style={styles.title}>¡Bienvenido!</Text>
+
+                {/*Input para nombre de usuario*/}
+                <TextInput
+                    style={styles.input}
+                    placeholder="Usuario"
+                    onChangeText={(text) => setUsername(text)}
+                    value={username}
+                />
+
+                {/*Input para contraseña*/}
+                <TextInput
+                    style={styles.input}
+                    placeholder="Contraseña"
+                    secureTextEntry
+                    onChangeText={(text) => setPassword(text)}
+                    value={password}
+                />
+
+                {/*Botón de login*/}
+                <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
+                    <Text style={styles.loginButtonText}>Iniciar Sesión</Text>
+                </TouchableOpacity>
+            </View>
+        </Fondo>
     );
   };
   
   const styles = StyleSheet.create({
-    background: {
-      flex: 1,
-      alignItems: 'center',
-      backgroundColor: COLORS.lilaShadow,
-      overflow: 'hidden'
-    },
-  
-    ImageBackground: {
-      resizeMode: 'cover',
-      width: '100%'
-    },
-  
     logo: {
       width: '100%',
       height: 150,
