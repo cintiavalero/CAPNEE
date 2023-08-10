@@ -1,24 +1,30 @@
 {
-  "name": "capnee-frontend",
+  "name": "capnebackend",
   "version": "1.0.0",
-  "main": "node_modules/expo/AppEntry.js",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web"
+    "dev": "nodemon src/api.js"
   },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "expo": "~48.0.18",
-    "expo-status-bar": "~1.4.4",
-    "react": "18.2.0",
-    "react-native": "0.71.8",
-    "react-native-web": "~0.18.10",
-    "react-dom": "18.2.0",
-    "@expo/webpack-config": "^18.0.1"
+    "@tensorflow/tfjs-node": "^4.10.0",
+    "bcrypt": "^5.1.0",
+    "canvas": "^2.11.2",
+    "express": "^4.18.2",
+    "express-fileupload": "^1.4.0",
+    "express-myconnection": "^1.0.4",
+    "face-api.js": "^0.22.2",
+    "jsonwebtoken": "^9.0.1",
+    "morgan": "^1.10.0",
+    "mysql": "^2.18.1",
+    "pg": "^8.11.1",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.32.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.0"
-  },
-  "private": true
+    "nodemon": "^3.0.1"
+  }
 }
