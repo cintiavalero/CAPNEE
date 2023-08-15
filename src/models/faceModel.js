@@ -17,6 +17,13 @@ const FaceModel = sequelize.define(
   { timestamps: false }
 );
 
+FaceModel.prototype.getId = function () {
+  return this.id;
+};
+FaceModel.prototype.getNombre = function () {
+  return this.nombre;
+};
+
 //FaceModel.beforeCreate(console.log("Creando...."));
 FaceModel.belongsTo(Alumno, { foreignKey: "idalumno" });
 

@@ -91,6 +91,7 @@ const createUser = async (req, res) => {
           { transaction }
         );
         const buffer = Buffer.from(userData["imagen"], "base64");
+        console.log(buffer);
         const alta = await altaFaceModel(alumno.id, [buffer], transaction);
         console.log(alta);
         if (!alta) {
@@ -140,9 +141,9 @@ const createUser = async (req, res) => {
   }
 };
 
-const altaFaceModel = async (idusuario, imagenesUsuario, transaction) => {
+const altaFaceModel = async (idalumno, imagenesUsuario, transaction) => {
   try {
-    // Cargar modelos de detección y reconocimiento de caras
+    // Se cargan los modelos de deteccion de caras
     await Promise.all([
       faceapi.nets.ssdMobilenetv1.loadFromDisk(__dirname + "/models"),
       faceapi.nets.faceLandmark68Net.loadFromDisk(__dirname + "/models"),
@@ -163,12 +164,9 @@ const altaFaceModel = async (idusuario, imagenesUsuario, transaction) => {
     }
 
     const descripcionJSON = JSON.stringify(descriptions);
-    console.log(descripcionJSON);
-
-    // Crear un registro en la base de datos
     await FaceModel.create(
       {
-        idusuario,
+        idalumno: idalumno,
         descripcion: descripcionJSON,
       },
       { transaction }
