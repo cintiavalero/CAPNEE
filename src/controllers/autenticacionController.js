@@ -26,15 +26,18 @@ const login = async (req, res) => {
       const labeledDescriptors = [];
       for (i = 0; i < faces.length; i++) {
         const ls = JSON.parse(faces[i].descripcion);
-        //console.log(ls);
         for (j = 0; j < ls.length; j++) {
           const arreglo = Object.values(ls[j]);
           const descriptorArray = [new Float32Array(arreglo)];
-          const a = new faceapi.labeledDescriptors(i, descriptorArray);
+          const a = new faceapi.LabeledFaceDescriptors(
+            faces[i].idalumno.toString(),
+            descriptorArray
+          );
           labeledDescriptors.push(a);
         }
       }
-      res.send(labeledDescriptors.length);
+
+      //res.send(labeledDescriptors);
       /*const ds = JSON.parse(faces[0].descripcion);
       const ls = JSON.parse(faces[1].descripcion);
       const arreglo = Object.values(ds[0]);
