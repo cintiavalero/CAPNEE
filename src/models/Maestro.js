@@ -17,7 +17,5 @@ const Maestro=sequelize.define('maestro',{
 {timestamps:false}  );
 
 
-Maestro.belongsTo(Persona,{foreignKey:'idpersona'});
-Persona.hasOne(Maestro,{foreignKey:'idpersona'});
 
 module.exports=Maestro;

@@ -6,6 +6,7 @@ const Usuario = require("../models/Usuario");
 const Persona = require("../models/Persona");
 const Alumno = require("../models/Alumno");
 const Maestro = require("../models/Maestro");
+const { user } = require("pg/lib/defaults");
 
 const getUsuarios = async (req, res) => {
   try {
@@ -47,7 +48,6 @@ const getUser = async (req, res) => {
 
 const createUser = async (req, res) => {
   const { rol, ...userData } = req.body;
-
   try {
     await sequelize.transaction(async (transaction) => {
       const existingUser = await Usuario.findOne({
@@ -85,14 +85,17 @@ const createUser = async (req, res) => {
         const alumno = await Alumno.create(
           {
             legajo: userData["legajo"],
-            imagen: userData["imagen"],
+            imagen: userData["imagen"][0],
             idpersona: persona.id,
           },
           { transaction }
         );
-        const buffer = Buffer.from(userData["imagen"], "base64");
-        console.log(buffer);
-        const alta = await altaFaceModel(alumno.id, [buffer], transaction);
+        var arr = [];
+        for (const imagenUsuario of userData["imagen"]) {
+          const buffer = Buffer.from(imagenUsuario, "base64");
+          arr.push(buffer);
+        }
+        const alta = await altaFaceModel(alumno.id, arr, transaction);
         console.log(alta);
         if (!alta) {
           throw new Error(
@@ -145,7 +148,7 @@ const altaFaceModel = async (idalumno, imagenesUsuario, transaction) => {
   try {
     // Se cargan los modelos de deteccion de caras
     await Promise.all([
-      faceapi.nets.ssdMobilenetv1.loadFromDisk(__dirname + "/models"),
+      faceapi.nets.tinyFaceDetector.loadFromDisk(__dirname + "/models"),
       faceapi.nets.faceLandmark68Net.loadFromDisk(__dirname + "/models"),
       faceapi.nets.faceRecognitionNet.loadFromDisk(__dirname + "/models"),
     ]);
@@ -156,7 +159,7 @@ const altaFaceModel = async (idalumno, imagenesUsuario, transaction) => {
       const img = await canvas.loadImage(imagenUsuario);
 
       const faceImageFd = await faceapi
-        .detectSingleFace(img)
+        .detectSingleFace(img, new faceapi.TinyFaceDetectorOptions())
         .withFaceLandmarks()
         .withFaceDescriptor();
 

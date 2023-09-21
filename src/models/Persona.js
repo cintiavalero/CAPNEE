@@ -30,8 +30,6 @@ Persona.prototype.getNombre = function () {
   };
 
 
-Persona.belongsTo(Usuario, { foreignKey: 'idusuario' });
 
-Usuario.hasOne(Persona, { foreignKey: 'idusuario' });
 
 module.exports = Persona;

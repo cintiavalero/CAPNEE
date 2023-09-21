@@ -23,8 +23,4 @@ const Alumno = sequelize.define(
   { timestamps: false }
 );
 
-Alumno.belongsTo(Persona, { foreignKey: "idpersona" });
-
-Persona.hasOne(Alumno, { foreignKey: "idpersona" });
-
 module.exports = Alumno;

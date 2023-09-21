@@ -1,28 +1,22 @@
 //Importamos todo el modulo'express' y lo almacenamos en la constante express
 const express = require("express");
-//Importamos el modulo 'morgan' que nos provee informacion de todas las peticiones que se realizan
-const morgan = require("morgan");
+//Importamos la configuracion de la aplicacion
+const configApp = require("./config/configApp");
+//Importamos la instancia de conexion a la base de datos mediante el ORM Sequalize
+const { sequelize } = require("./database/database");
+//Importamos la configuracion de los modelos y sus asociaciones
+const configuracionModels = require("./models");
+//Importamos las rutas/endpoints que va a administrar nuestra
+const routers = require("./routers.js");
 //Creamos una instancia de la aplicacion Express llamada 'app' esta instancia va a ser la encargada de adminsitrar todas las peticiones
 const app = express();
-const routesUsers = require("./routes/rutasUsuarios");
-const rutaAutenticacion = require("./routes/rutaAutenticacion");
-const { sequelize } = require("./database/database");
 
-const Alumno = require("./models/Alumno");
-const FaceModel = require("./models/faceModel");
-//Configuracion de la app
-app.use(morgan("dev"));
-app.set("json spaces", 2);
-app.set("puerto", process.env.PORT || 4000);
-app.use(express.json({ limit: "10mb" })); //Permitimos recibir formatos json y entenderlos
-
+// Configuración de la aplicación
+configApp(app);
+//Configura los modelos y asociaciones
+configuracionModels(sequelize);
 //Rutas
-app.use(routesUsers);
-app.use(rutaAutenticacion);
-
-app.use("/", async (req, res) => {
-  await sequelize.sync({ force: true });
-});
+app.use("/api", routers);
 
 //Le asignamos un puerto por el cual va a escuchar nuestra aplicacion
 app.listen(app.get("puerto"), () => {

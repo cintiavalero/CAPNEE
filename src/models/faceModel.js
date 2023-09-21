@@ -24,9 +24,4 @@ FaceModel.prototype.getNombre = function () {
   return this.nombre;
 };
 
-//FaceModel.beforeCreate(console.log("Creando...."));
-FaceModel.belongsTo(Alumno, { foreignKey: "idalumno" });
-
-Alumno.hasOne(FaceModel, { foreignKey: "idalumno" });
-
 module.exports = FaceModel;
