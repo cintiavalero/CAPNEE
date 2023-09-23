@@ -1,4 +1,4 @@
-
+CAPNEE
 CREAR PROYECTO CON EXPO Y JS
 - Intalar dependencias de expo cli:npm install -g expo cli
 - Iniciar un proyecto (por defecto con Javascript): npx create-expo-app
