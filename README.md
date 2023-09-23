@@ -1,3 +1,6 @@
 # CAPNEE-FrontEnd
 
-Crear branches a partir de "dev"
+Esta rama es únicamente para integrar Frontend y Backend.
+Para agregar cambios debe moverse a la rama correspondiente a su equipo:
+- git checkout Frontend | git checkout Frontend
+  
