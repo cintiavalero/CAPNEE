@@ -7,7 +7,7 @@ ____________________
 BRANCH DEV: únicamente para integrar Frontend y Backend.
 Para agregar cambios debe moverse a la rama correspondiente a su equipo:
 - git checkout Frontend
-- git checkout Frontend
+- git checkout Backend
 ____________________
 BRANCH FRONTEND
 - Para realizar cambios, crear una branch
