@@ -4,8 +4,8 @@ ESTRUCTURA DE BRANCHES
 - No se integram cambios en Master
 - Master--> dev | dev --> Frontend y Backend
 ____________________
-BRANCH DEV
-Esta rama es únicamente para integrar Frontend y Backend. Para agregar cambios debe moverse a la rama correspondiente a su equipo:
+BRANCH DEV: únicamente para integrar Frontend y Backend.
+Para agregar cambios debe moverse a la rama correspondiente a su equipo:
 - git checkout Frontend
 - git checkout Frontend
 ____________________
