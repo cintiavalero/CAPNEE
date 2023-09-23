@@ -1,9 +1,6 @@
 # CAPNEE
 ____________________
-Master
-  |dev
-    |Frontend
-    |Backend
+Master--> dev | dev --> Frontend y Backend
 ____________________
   
 Crear branches desde "Frontend" o "Backend", según corresponda, para agregar cambios
