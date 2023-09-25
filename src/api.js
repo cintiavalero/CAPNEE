@@ -6,6 +6,8 @@ const configApp = require("./config/configApp");
 const { sequelize } = require("./database/database");
 //Importamos la configuracion de los modelos y sus asociaciones
 const configuracionModels = require("./models");
+//Importamos el archivo que se va a encargar de manejar los errores
+const manejadorErrores = require("./manejoDeErrores/manejadorError");
 //Importamos las rutas/endpoints que va a administrar nuestra
 const routers = require("./routers.js");
 //Creamos una instancia de la aplicacion Express llamada 'app' esta instancia va a ser la encargada de adminsitrar todas las peticiones
@@ -17,7 +19,8 @@ configApp(app);
 configuracionModels(sequelize);
 //Rutas
 app.use("/api", routers);
-
+// Middleware de manejo de errores global
+app.use(manejadorErrores);
 //Le asignamos un puerto por el cual va a escuchar nuestra aplicacion
 app.listen(app.get("puerto"), () => {
   console.log(` Aplicacion corriendo en el puerto ${app.get("puerto")}`);

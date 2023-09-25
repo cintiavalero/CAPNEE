@@ -1,7 +1,9 @@
 const { Router } = require("express");
-const { login } = require("../controllers/autenticacionController");
+const autenticacionController = require("../controllers/autenticacionController");
 const router = Router();
 
-router.post("/login", login);
+router.post("/login", async (req, res) => {
+  await autenticacionController.login(req, res);
+});
 
 module.exports = router;

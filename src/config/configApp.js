@@ -11,8 +11,7 @@ module.exports = (app) => {
   app.use(cors());
   // Configuración de Morgan para el registro de solicitudes HTTP en formato "dev"
   app.use(morgan("dev"));
-  // Configuración de bodyParser para analizar datos JSON en solicitudes
-  app.use(bodyParser.json());
-  app.set("json spaces", 2);
+  // Configuración para manejo de Json recibidos
   app.use(express.json({ limit: "10mb" }));
+  app.set("json spaces", 2);
 };

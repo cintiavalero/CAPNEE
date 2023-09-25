@@ -9,6 +9,18 @@ const Usuario = sequelize.define(
       primaryKey: true,
       autoIncrement: true,
     },
+    fechanacimiento: {
+      type: DataTypes.DATEONLY,
+      allowNull: false,
+    },
+    nombre: {
+      type: DataTypes.STRING(25),
+      allowNull: false,
+    },
+    apellido: {
+      type: DataTypes.STRING(25),
+      allowNull: false,
+    },
     username: {
       type: DataTypes.STRING(25),
       allowNull: false,
