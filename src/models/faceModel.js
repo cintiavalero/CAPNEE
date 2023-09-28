@@ -1,6 +1,5 @@
 const { DataTypes } = require("sequelize");
 const { sequelize: sequelize } = require("../database/database");
-const Alumno = require("./Alumno");
 const FaceModel = sequelize.define(
   "facemodel",
   {

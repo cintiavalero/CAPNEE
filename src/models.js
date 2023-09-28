@@ -3,7 +3,6 @@ module.exports = (sequelize) => {
   const Alumno = require("./models/Alumno");
   const FaceModel = require("./models/faceModel");
   const Maestro = require("./models/Maestro");
-  const Persona = require("./models/Persona");
   const Usuario = require("./models/Usuario");
 
   // Se configuran las asociaciones entre los modelos

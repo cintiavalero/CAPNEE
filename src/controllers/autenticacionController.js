@@ -1,9 +1,7 @@
-const { sequelize } = require("../database/database");
 const { crearToken } = require("../models/Jwt");
-//const tf = require("@tensorflow/tfjs-node");
+
 const canvas = require("../../node_modules/canvas");
 const faceapi = require("../../node_modules/face-api.js");
-//require("@tensorflow/tfjs");
 
 // patch nodejs environment, we need to provide an implementation of
 // HTMLCanvasElement and HTMLImageElement
@@ -16,29 +14,28 @@ const Maestro = require("../models/Maestro");
 const FaceModel = require("../models/faceModel");
 
 class autenticacionController {
-  async login(req, res) {
+  async login(req, res, next) {
     try {
       if ("username" in req.body) {
+        const username = req.body.username;
         const usuario = await Usuario.findOne({
-          where: { username: req.body["username"] },
+          where: { username: username },
         });
+
         if (!usuario) {
-          res.status(500).json({
-            Exito: false,
-            Mensaje: "Usuario o Contraseña incorrectos",
-          });
+          let e = new Error("Usuario o clave incorrectos");
+          e.statusCode = 401;
+          next(e);
         }
-        const password = req.body["password"];
+
+        const password = req.body.password;
         const claveEsCorrecta = await usuario.verifyPassword(password);
         if (claveEsCorrecta) {
-          const persona = await Persona.findOne({
+          const alumno = await Alumno.findOne({
             where: { idusuario: usuario.getId() },
           });
-          const alumno = await Alumno.findOne({
-            where: { idpersona: persona.getId() },
-          });
           const maestro = await Maestro.findOne({
-            where: { idpersona: persona.getId() },
+            where: { idusuario: usuario.getId() },
           });
           var rol;
           if (alumno) {
@@ -46,22 +43,20 @@ class autenticacionController {
           } else if (maestro) {
             rol = "maestro";
           } else {
-            res.status(500).json({
-              Exito: false,
-              Mensaje: "El username no es ni maestro ni profesor",
-            });
+            let e = new Error("Usuario o clave incorrectos");
+            e.statusCode = 401;
+            next(e);
           }
           const informacionUsuario = {
-            nombre: persona.getNombre(),
+            nombre: usuario.getNombre(),
             rol: rol,
           };
           const token = await crearToken(informacionUsuario);
           res.json({ token });
         } else {
-          res.status(500).json({
-            Exito: false,
-            Mensaje: "Usuario o Contraseña incorrectos",
-          });
+          let e = new Error("Usuario o clave incorrectos");
+          e.statusCode = 401;
+          next(e);
         }
       } else if ("imagenUsuario" in req.body) {
         await Promise.all([
@@ -102,9 +97,23 @@ class autenticacionController {
         if (detections) {
           const result = faceMatcher.findBestMatch(detections.descriptor);
           res.send(result);
+        } else {
+          let e = new Error(
+            "El rostro no coincide con ningun usuario registrado."
+          );
+          e.statusCode = 401;
+          next(e);
         }
       }
-    } catch ($e) {}
+    } catch (error) {
+      if (error.statusCode) {
+        next(error);
+      } else {
+        let e = new Error("Error al autenticarse");
+        e.statusCode = 500;
+        next(e);
+      }
+    }
   }
 
   async getDetections(base64ImageData) {

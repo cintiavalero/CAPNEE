@@ -38,6 +38,10 @@ Usuario.prototype.getId = function () {
   return this.id;
 };
 
+Usuario.prototype.getNombre = function () {
+  return this.nombre;
+};
+
 Usuario.beforeCreate(async (usuario) => {
   const saltRounds = 10;
   const hashedPassword = await bcrypt.hash(usuario.passwd, saltRounds);

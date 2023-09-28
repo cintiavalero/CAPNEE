@@ -1,15 +1,15 @@
 //Requiero desde express el metodo Router, este me permite definir nuevas
 //rutas para mi servidor
 const { Router } = require("express");
-
+const jwt = require("../models/Jwt");
 const UsuarioController = require("../controllers/usuariosControllers");
 //Instanciamos ese metodo
 const router = Router();
 
-router.get("/usuarios", async (req, res, next) => {
+router.get("/usuarios", jwt.verificarToken, async (req, res, next) => {
   await UsuarioController.getUsuarios(req, res, next);
 });
-router.get("/usuarios/:id", async (req, res, next) => {
+router.get("/usuarios/:id", jwt.verificarToken, async (req, res, next) => {
   await UsuarioController.getUser(req, res, next);
 });
 
