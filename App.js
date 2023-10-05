@@ -9,6 +9,7 @@ export default function App() {
   return (
     <SafeAreaView style={styles.container}>
       <Actividad/>
+      <StatusBar style="auto"/>
     </SafeAreaView>
   );
 }
@@ -20,7 +21,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
-
 
 
 //Probar pantalla perfil
