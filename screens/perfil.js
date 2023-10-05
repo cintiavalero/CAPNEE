@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Image, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import Navbar from '../components/Navbar';
 
 export default function Profile() {
   return (
@@ -27,12 +28,7 @@ export default function Profile() {
           <Text style={styles.buttonText}>Cerrar sesión</Text>
         </TouchableOpacity>
       </View>
-      <View style={styles.navMenu} />
-      <View style={styles.navOptions}>
-        <Image source={require('../img/nav/tasks.png')} style={styles.tasks} />
-        <Image source={require('../img/nav/home.png')} style={styles.home} />
-        <Image source={require('../img/nav/students.png')} style={styles.students} />
-      </View>
+      <Navbar/>
     </View>
   );
 }
@@ -112,21 +108,5 @@ const styles = StyleSheet.create({
     textShadowColor: 'rgba(0,0,0,0.5)',
     textShadowOffset: { width: 1, height: 1 },
     textShadowRadius: 2,
-  },
-  navMenu: {
-    top: '8%',
-    backgroundColor: '#FFF',
-    width: '100%',
-    height: '10%',
-    borderTopEndRadius: 20,
-    borderTopLeftRadius: 20,
-  },
-  navOptions: {
-    width: '70%',
-    overflow: 'hidden',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    bottom: '1%',
   },
 });

@@ -1,31 +1,34 @@
-import { ImageBackground, StyleSheet, View } from "react-native"
+import React from 'react';
+import { ImageBackground, StyleSheet, View, Dimensions } from 'react-native';
 
-//Componente de fondo con números
-const Fondo = ({children, backgroundColor}) => {
-    return (
-        <View style={[styles.background, {backgroundColor}]}>
-            <ImageBackground
-                source={require('../assets/fondo.jpg')}
-                style={[styles.ImageBackground, {backgroundColor}]}
-                imageStyle={{ opacity: 0.1 }}
-            >
-                {children}
-            </ImageBackground>
-        </View>
-    );
+const Fondo = ({ children, backgroundColor }) => {
+  return (
+    <View style={[styles.background, { backgroundColor }]}>
+      <ImageBackground
+        source={require('../assets/fondo.jpg')}
+        style={styles.imageBackground}
+        imageStyle={{ opacity: 0.1 }}
+      >
+        {children}
+      </ImageBackground>
+    </View>
+  );
 };
 
-const styles = StyleSheet.create({
-background: {
-    flex: 1,
-    alignItems: 'center',
-    overflow: 'hidden'
-},
+const windowHeight = Dimensions.get('window').height;
 
-    ImageBackground: {
-        resizeMode: 'cover',
-        width: '100%'
-    }
+const styles = StyleSheet.create({
+  background: {
+    padding: 0,
+    height: windowHeight, 
+    alignItems: 'center',
+    overflow: 'hidden',
+  },
+  imageBackground: {
+    resizeMode: 'cover',
+    width: '100%',
+    height: '100%', 
+  },
 });
 
 export default Fondo;
