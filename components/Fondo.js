@@ -1,9 +1,12 @@
 import React from 'react';
-import { ImageBackground, StyleSheet, View, Dimensions } from 'react-native';
+import { ImageBackground, StyleSheet, View, Dimensions, KeyboardAvoidingView } from 'react-native';
 
 const Fondo = ({ children, backgroundColor }) => {
   return (
-    <View style={[styles.background, { backgroundColor }]}>
+    <KeyboardAvoidingView
+      style={[styles.background, { backgroundColor }]}
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+    >
       <ImageBackground
         source={require('../assets/fondo.jpg')}
         style={styles.imageBackground}
@@ -11,7 +14,7 @@ const Fondo = ({ children, backgroundColor }) => {
       >
         {children}
       </ImageBackground>
-    </View>
+    </KeyboardAvoidingView>
   );
 };
 
@@ -19,15 +22,15 @@ const windowHeight = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
   background: {
-    padding: 0,
-    height: windowHeight, 
+    flex: 1,
     alignItems: 'center',
     overflow: 'hidden',
+    width: '100%',
+    
   },
   imageBackground: {
-    resizeMode: 'cover',
-    width: '100%',
-    height: '100%', 
+    resizeMode: 'none',
+    width: '100%', 
   },
 });
 
