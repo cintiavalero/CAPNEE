@@ -80,7 +80,7 @@ const Login = () => {
     },
   
     title: {
-      fontSize: 35,
+      fontSize: 55,
       fontWeight: 'bold',
       marginBottom: 30,
       color: COLORS.lilaShadow
@@ -88,13 +88,13 @@ const Login = () => {
   
     input: {
       width: '80%',
-      height: 50,
+      height: 55,
       backgroundColor: COLORS.grisClaro,
       borderRadius: 20,
       marginBottom: 15,
       paddingHorizontal: 18,
       fontSize: 25,
-      padding: 35,
+      // padding: 35,
       fontWeight: '400'
     },
   
@@ -111,7 +111,7 @@ const Login = () => {
     loginButtonText: {
       color: COLORS.white,
       fontSize: 25,
-      fontWeight: '650',
+      fontWeight: 'bold',
     },
   });
   
