@@ -21,64 +21,84 @@ const Login = () => {
     };
   
     return (
-        //El color del fondo se asigna desde la propiedad backgroundColor, a partir del archivo COLORS.js
+      <View style={styles.contenedorLogin}>
+        {/* El color del fondo se asigna desde la propiedad backgroundColor, a partir del archivo COLORS.js */}
         <Fondo backgroundColor={COLORS.lilaShadow}>
             {/*Logo de CAPNEE*/}
-            <Image
-            source={require('../assets/logo.png')}
-            style={styles.logo}
-            >
-            </Image>
-
+            <View style={styles.logoContainer}>
+                    <Image source={require('../assets/logo.png')} style={styles.logo}></Image>
+            </View>
+            <View style={{ flex: 1 }}></View>
             {/*Contenedor blanco con los inputs de texto y el botón de login*/}
             <View style={styles.container}>
                 <Text style={styles.title}>¡Bienvenido!</Text>
+                <View style={styles.inputsContainer}>
 
-                {/*Input para nombre de usuario*/}
-                <TextInput
-                    style={styles.input}
-                    placeholder="Usuario"
-                    onChangeText={(text) => setUsername(text)}
-                    value={username}
-                />
+                  {/*Input para nombre de usuario*/}
+                  <TextInput
+                      style={styles.input}
+                      placeholder="Usuario"
+                      onChangeText={(text) => setUsername(text)}
+                      value={username}
+                  />
 
-                {/*Input para contraseña*/}
-                <TextInput
-                    style={styles.input}
-                    placeholder="Contraseña"
-                    secureTextEntry
-                    onChangeText={(text) => setPassword(text)}
-                    value={password}
-                />
+                  {/*Input para contraseña*/}
+                  <TextInput
+                      style={styles.input}
+                      placeholder="Contraseña"
+                      secureTextEntry
+                      onChangeText={(text) => setPassword(text)}
+                      value={password}
+                  />
 
-                {/*Botón de login*/}
-                <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
-                    <Text style={styles.loginButtonText}>Iniciar Sesión</Text>
-                </TouchableOpacity>
+                  {/*Botón de login*/}
+                  <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
+                      <Text style={styles.loginButtonText}>Iniciar Sesión</Text>
+                  </TouchableOpacity>
+
+                </View>
             </View>
         </Fondo>
+      </View>
     );
   };
   
   const styles = StyleSheet.create({
+    contenedorLogin: {
+      flex: 1, // Usar flex para ajustar el contenido a la pantalla
+      justifyContent: 'space-between',
+      height: '100%',
+    },
     logo: {
-      width: '100%',
-      height: 150,
-      position: 'absolute',
-      top: 125
+        zIndex: 10,
+        width: '65%',
+        aspectRatio: 2086/380,
+    },
+    logoContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '20%',
+        marginTop: 50,
     },
   
     container: {
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: COLORS.white,
-      height: "65%",
       width: "100%",
-      borderRadius: 70,
-      paddingBottom: 150,
-      marginTop: 400
+      backgroundColor: COLORS.white,
+      borderTopLeftRadius: 70,
+      borderTopRightRadius: 70,
+      overflow: 'auto',
+      height: '75%',
     },
-  
+    inputsContainer:{
+      justifyContent: 'center',
+      alignItems: 'center',
+      width: "100%",
+      height: 'auto',
+      marginBottom: 20,
+    },
     title: {
       fontSize: 55,
       fontWeight: 'bold',
@@ -88,13 +108,12 @@ const Login = () => {
   
     input: {
       width: '80%',
-      height: 55,
+      height: 70,
       backgroundColor: COLORS.grisClaro,
       borderRadius: 20,
-      marginBottom: 15,
+      marginTop: 20,
       paddingHorizontal: 18,
       fontSize: 25,
-      // padding: 35,
       fontWeight: '400'
     },
   
@@ -105,7 +124,8 @@ const Login = () => {
       borderRadius: 20,
       justifyContent: 'center',
       alignItems: 'center',
-      marginTop: 15,
+      marginTop: 35,
+      height: 80,
     },
     
     loginButtonText: {
