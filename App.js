@@ -9,13 +9,13 @@ import SeleccionActividades from './screens/SeleccionActividades';
 import SeleccionNivel from './screens/SeleccionNivel';
 import SeleccionTema from './screens/Tema';
 import VerificacionRegistro from './screens/VerificacionRegistro';
-
+import Registro from './screens/Registro';
 
 
 export default function App() {
   return (
     <SafeAreaView style={styles.container}>
-      <LoginFacial/>
+      <Registro/>
       {/* --Menu Principal-- */}
       {/* <MenuPrincipal/> */}
 
