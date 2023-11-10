@@ -7,6 +7,7 @@ import SeleccionActividades from './screens/SeleccionActividades';
 import Perfil from './screens/Perfil';
 
 
+
 export default function App() {
   return (
     <SafeAreaView style={styles.container}>
