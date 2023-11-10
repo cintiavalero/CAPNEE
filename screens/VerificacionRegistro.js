@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, View, StyleSheet, Image, TextInput, TouchableOpacity } from 'react-native';
-import COLORS from '../constants/colors';
-import Fondo from '../components/Fondo';
+import COLORS from '../src/constants/colors';
+import Fondo from '../src/components/Fondo';
 
 const VerificacionRegistro = () => {
     return (

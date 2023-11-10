@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, ImageBackground, Image } from 'react-native';
-import COLORS from '../constants/colors';
-import Fondo from '../components/Fondo';
+import COLORS from '../src/constants/colors';
+import Fondo from '../src/components/Fondo';
 
 const Login = () => {
     const [username, setUsername] = useState('');

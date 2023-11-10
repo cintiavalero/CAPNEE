@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
-import Fondo from '../components/Fondo';
-import Navbar from '../components/Navbar';
-import COLORS from '../constants/colors';
+import Fondo from '../src/components/Fondo';
+import Navbar from '../src/components/Navbar';
+import COLORS from '../src/constants/colors';
 
 const Ejercicio = () => {
   return (
