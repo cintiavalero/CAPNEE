@@ -1,112 +1,122 @@
 import React from 'react';
-import { View, Image, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import Navbar from '../components/Navbar';
+import { Text, View, Image, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
+import Fondo from '../src/components/Fondo';
+import Navbar from '../src/components/Navbar';
+import COLORS from '../src/constants/colors';
 
-export default function Profile() {
+//Imagenes
+
+
+const Perfil = () => {
   return (
-    <View style={styles.content}>
-      {/* Imagen y Nombre del Usuario */}
-      <Image source={require('../img/logo.png')} style={styles.logo} />
-      <Text style={styles.usuario}>Usuario</Text>
-      {/* Datos */}
-      <View style={styles.details}>
-        <View style={styles.detailsTitles}>
-          <Text style={styles.detailsTitlesText}>Legajo:</Text>
-          <Text style={styles.detailsTitlesText}>Curso:</Text>
-          <Text style={styles.detailsTitlesText}>Promedio:</Text>
-          <Text style={styles.detailsTitlesText}>Nota final:</Text>
+    <Fondo backgroundColor={COLORS.amarillo}>
+      <ScrollView contentContainerStyle={styles.container}>
+        {/*Logo*/}
+        <Image
+            source={require('../src/img/logoPerfil.png')}
+            style={styles.logoImage}
+          />
+
+        {/* Título */}
+        <Text style={styles.title}>Usuario/a</Text>
+
+        {/* Información del Perfil */}
+        <View style={styles.detailsContainer}>
+          <View style={styles.detailsTitles}>
+            <Text style={styles.detailsTitlesText}>Legajo:</Text>
+            <Text style={styles.detailsTitlesText}>Curso:</Text>
+            <Text style={styles.detailsTitlesText}>Promedio:</Text>
+            <Text style={styles.detailsTitlesText}>Nota final:</Text>
+          </View>
+          <View style={styles.detailsResults}>
+            <Text style={styles.detailsResultsText}>99999</Text>
+            <Text style={styles.detailsResultsText}>1° A</Text>
+            <Text style={styles.detailsResultsText}>8.5</Text>
+            <Text style={styles.detailsResultsText}>-</Text>
+          </View>
         </View>
-        <View style={styles.detailsResults}>
-          <Text style={styles.detailsResultsText}>99999</Text>
-          <Text style={styles.detailsResultsText}>1° A</Text>
-          <Text style={styles.detailsResultsText}>8.5</Text>
-          <Text style={styles.detailsResultsText}>-</Text>
-        </View>
-      </View>
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.sesionButton}>
-          <Text style={styles.buttonText}>Cerrar sesión</Text>
+
+        {/* Botones */}
+        <TouchableOpacity style={[styles.button, styles.sesionButton]}>
+          <Text style={styles.textButton}>Cerrar Sesión</Text>
         </TouchableOpacity>
-      </View>
+      </ScrollView>
       <Navbar/>
-    </View>
+    </Fondo>
   );
-}
+};
 
 const styles = StyleSheet.create({
-  content: {
-    flex: 1,
-    alignItems: 'center',
+  container: {
+    flexGrow: 1,
     justifyContent: 'center',
-    paddingTop: '10%',
+    alignItems: 'center',
   },
-  logo: {
-    width: 142,
-    height: 142,
-  },
-  usuario: {
-    fontSize: 32,
-    color: '#B28CF6',
-    textAlign: 'center',
+  title: {
+    fontSize: 28,
     fontWeight: 'bold',
-    marginTop: 10,
+    margin: 10,
+    color: COLORS.lilaShadow,
   },
-  details: {
-    top: '5%',
-    backgroundColor: '#B28CF6',
-    borderRadius: 26,
-    width: 281,
-    height: '45%',
+  logoImage: {
+    width: '100%', 
+    height: 150,
+    resizeMode: 'contain',
+    marginBottom: 10,
+    borderRadius: 50,
+  },
+  detailsContainer: {
+    backgroundColor: COLORS.lila,
+    borderRadius: 30,
+    width: '80%',
     alignItems: 'center',
     justifyContent: 'space-between',
     flexDirection: 'row',
   },
   detailsTitlesText: {
-    marginTop: 40,
+    width: '100%',
+    marginBottom: 20,
     marginLeft: '5%',
     fontSize: 26,
     bottom: '5%',
-    color: '#fff',
+    color: COLORS.white,
     textAlign: 'left',
   },
   detailsResultsText: {
-    marginTop: 40,
+    width: '100%',
+    marginBottom: 20,
     marginRight: '5%',
     fontSize: 26,
     bottom: '5%',
-    color: '#000',
+    color: COLORS.black,
     textAlign: 'right',
   },
   detailsTitles: {
+    marginTop: 15,
     marginLeft: '5%',
     textAlign: 'left',
   },
   detailsResults: {
+    marginTop: 15,
     marginRight: '5%',
     textAlign: 'right',
   },
-  buttonContainer: {
-    flex: 1,
+  button: {
+    width: '80%',
+    height: 60,
     justifyContent: 'center',
     alignItems: 'center',
+    margin: 10,
+    borderRadius: 30,
   },
   sesionButton: {
-    marginTop: '20%',
-    backgroundColor: '#FC5F72',
-    borderRadius: 28,
-    overflow: 'hidden',
-    width: 281,
-    height: '90%',
-    justifyContent: 'center',
+    backgroundColor: COLORS.melon,
   },
-  buttonText: {
-    color: '#fff',
-    textAlign: 'center',
-    justifyContent: 'center',
-    fontSize: 24,
+  textButton: {
+    color: COLORS.white,
+    fontSize: 26,
     fontWeight: 'bold',
-    textShadowColor: 'rgba(0,0,0,0.5)',
-    textShadowOffset: { width: 1, height: 1 },
-    textShadowRadius: 2,
   },
 });
+
+  export default Perfil;
