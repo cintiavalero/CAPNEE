@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, View, StyleSheet, Image, TextInput, TouchableOpacity } from 'react-native';
-import COLORS from '../constants/colors';
-import Fondo from '../components/Fondo';
+import COLORS from '../src/constants/colors';
+import Fondo from '../src/components/Fondo';
 
 const VerificacionRegistro = () => {
     return (
@@ -31,6 +31,7 @@ const styles = StyleSheet.create({
         flex: 1, // Usar flex para ajustar el contenido a la pantalla
         justifyContent: 'space-between',
         height: '100%',
+        width: '100%',
     },
     logo: {
         zIndex: 10,
