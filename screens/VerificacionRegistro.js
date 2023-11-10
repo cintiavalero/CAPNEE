@@ -31,6 +31,7 @@ const styles = StyleSheet.create({
         flex: 1, // Usar flex para ajustar el contenido a la pantalla
         justifyContent: 'space-between',
         height: '100%',
+        width: '100%',
     },
     logo: {
         zIndex: 10,
