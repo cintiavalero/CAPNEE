@@ -18,7 +18,7 @@ const VerificacionRegistro = () => {
                     <TextInput style={styles.input} placeholder="Código"></TextInput>
                     <Text style={styles.textLink}>¿Cómo obtengo el código?</Text>
                     <TouchableOpacity style={styles.verificacionButton}>
-                      <Text style={styles.verificacionButtonText}>Iniciar Sesión</Text>
+                      <Text style={styles.verificacionButtonText}>Continuar y registrar</Text>
                     </TouchableOpacity>              
                 </View>
             </Fondo>
