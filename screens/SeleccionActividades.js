@@ -9,7 +9,7 @@ import candado from '../src/img/candado.png';
 import estrellas from '../src/img/estrellas.png';
 import { View } from 'react-native-web';
 
-const SeleccionActividades = () => {
+const SeleccionActividades = ({ navigation }) => {
     return (
       <Fondo backgroundColor={COLORS.cielo}>
         <ScrollView contentContainerStyle={styles.container}>
@@ -23,7 +23,7 @@ const SeleccionActividades = () => {
         <Text style={styles.title}>Suma y Resta</Text>
   
         {/* Botones */}
-          <TouchableOpacity style={[styles.button, styles.nivel1Button]}>
+          <TouchableOpacity style={[styles.button, styles.nivel1Button]}  onPress={() => {navigation.navigate("Ejercicio")}}>
             <Text style={styles.textButton}>Actividad 1</Text>
             <View style={styles.estrellasContainer}>
                 <Image source={estrellas} style={[styles.estrellaImg, styles.estrellaDorada]}/>

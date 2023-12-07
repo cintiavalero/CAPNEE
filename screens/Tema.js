@@ -4,7 +4,7 @@ import Fondo from '../src/components/Fondo';
 import Navbar from '../src/components/Navbar';
 import COLORS from '../src/constants/colors';
 
-const SeleccionTema = () => {
+const SeleccionTema = ({ navigation }) => {
     return (
       <Fondo backgroundColor={COLORS.cielo}>
         <ScrollView contentContainerStyle={styles.container}>
@@ -18,7 +18,7 @@ const SeleccionTema = () => {
           <Text style={styles.title}>¡A Resolver!</Text>
   
           {/* Botones */}
-          <TouchableOpacity style={[styles.button, styles.addMathButton]}>
+          <TouchableOpacity style={[styles.button, styles.addMathButton]} onPress={navigation.navigate("SeleccionNivel")}>
             <Text style={styles.textButton}>Suma y Resta</Text>
           </TouchableOpacity>
           <TouchableOpacity style={[styles.button, styles.multiplicationButton]}>
