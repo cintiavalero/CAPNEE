@@ -1,39 +1,38 @@
 import React from 'react';
-import { SafeAreaView, StatusBar, StyleSheet } from 'react-native';
-import Ejercicio from './screens/Actividad';
+import { StatusBar, StyleSheet } from 'react-native';
+import AppNavigator from './src/components/AppNavigator';
+// import Ejercicio from './screens/Actividad';
 import Login from './screens/Login';
-import LoginFacial from './screens/LoginFacial';
-import MenuPrincipal from './screens/Menu';
-import Perfil from './screens/Perfil';
-import SeleccionActividades from './screens/SeleccionActividades';
-import SeleccionNivel from './screens/SeleccionNivel';
-import SeleccionTema from './screens/Tema';
-import VerificacionRegistro from './screens/VerificacionRegistro';
-import Registro from './screens/Registro';
 
+// import LoginFacial from './screens/LoginFacial';
+// import MenuPrincipal from './screens/Menu';
+// import Perfil from './screens/Perfil';
+// import SeleccionActividades from './screens/SeleccionActividades';
+// import SeleccionNivel from './screens/SeleccionNivel';
+// import SeleccionTema from './screens/Tema';
+// import VerificacionRegistro from './screens/VerificacionRegistro';
 
 export default function App() {
   return (
-    <SafeAreaView style={styles.container}>
-      <Registro/>
-      {/* --Menu Principal-- */}
-      {/* <MenuPrincipal/> */}
 
-      {/* --Selección de Tema-- */}
-      {/* <SeleccionTema/> */}
+      // {/* // <LoginFacial/>
+      // // {/* --Menu Principal-- */}
+      // {/* <MenuPrincipal/> */}
 
-      {/* --Perfil-- */}
-      {/* <Perfil/> */}
+      // {/* --Selección de Tema-- */}
+      // {/* <SeleccionTema/> */}
 
-      {/* --Selección de Nivel-- */}
-      {/* <SeleccionNivel/> */}
+      // {/* --Perfil-- */}
+      // {/* <Perfil/> */}
+      // {/* <Login/> */}
+      // {/* --Selección de Nivel-- */}
+      // {/* <SeleccionNivel/> */}
 
-      {/* --Selección de Actividades-- */}
-      {/* <SeleccionActividades/> */}
+      // {/* --Selección de Actividades-- */}
+      //  {/* <SeleccionActividades/> */}
+        <AppNavigator/>
+      //   {/* <StatusBar style="auto"/> */}
 
-
-      <StatusBar style="auto"/>
-    </SafeAreaView>
   );
 }
 

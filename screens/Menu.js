@@ -4,7 +4,7 @@ import Fondo from '../src/components/Fondo';
 import Navbar from '../src/components/Navbar';
 import COLORS from '../src/constants/colors';
 
-const MenuPrincipal = () => {
+const MenuPrincipal = ({ navigation }) => {
   return (
     <Fondo backgroundColor={COLORS.oliva}>
       <ScrollView contentContainerStyle={styles.container}>
@@ -30,7 +30,7 @@ const MenuPrincipal = () => {
         <TouchableOpacity style={[styles.button, styles.joinButton]}>
           <Text style={styles.textButton}>Unirse</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={[styles.button, styles.solveButton]}>
+        <TouchableOpacity style={[styles.button, styles.solveButton]} onPress={() => navigation.navigate('SeleccionTema')}>
           <Text style={styles.textButton}>¡Resolver!</Text>
         </TouchableOpacity>
       </ScrollView>

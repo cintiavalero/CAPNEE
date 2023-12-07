@@ -3,20 +3,17 @@ import { View, Text, TextInput, TouchableOpacity, StyleSheet, ImageBackground, I
 import COLORS from '../src/constants/colors';
 import Fondo from '../src/components/Fondo';
 
-const Login = () => {
+const Login = ({ navigation }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
   
     //Validaciones para las credenciales
     const handleLogin = () => {
-      if (username.trim() === '' || password.trim() === '') {
-        alert('Por favor, completar todos los campos')
+      if (username == '' && password === '') {
+        alert('Inicio de sesión exitoso');
+        navigation.navigate('MenuPrincipal')
       } else {
-        if (username === 'usuario' && password === 'contraseña') {
-          alert('Inicio de sesión exitoso');
-        } else {
-          alert('Usuario o contraseña incorrectos');
-        }
+        alert('Usuario o contraseña incorrectos');
       }
     };
   

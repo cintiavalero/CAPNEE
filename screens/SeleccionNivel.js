@@ -7,7 +7,7 @@ import COLORS from '../src/constants/colors';
 //Imagenes
 import candado from '../src/img/candado.png';
 
-const SeleccionNivel = () => {
+const SeleccionNivel = ({ navigation }) => {
     return (
       <Fondo backgroundColor={COLORS.cielo}>
         <ScrollView contentContainerStyle={styles.container}>
@@ -21,7 +21,7 @@ const SeleccionNivel = () => {
         <Text style={styles.title}>Suma y Resta</Text>
   
         {/* Botones */}
-          <TouchableOpacity style={[styles.button, styles.nivel1Button]}>
+          <TouchableOpacity style={[styles.button, styles.nivel1Button]} onPress={() => {navigation.navigate("SeleccionActividades")}}>
             <Text style={styles.textButton}>Nivel I</Text>
           </TouchableOpacity>
           <TouchableOpacity style={[styles.button, styles.nivel2Button]}>
